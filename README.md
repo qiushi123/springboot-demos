@@ -1,5 +1,4 @@
-# 这里带大家零基础入门java开发，使用最新的springboot2.1.5
-
+# 这里带大家零基础入门java开发，入门springboot，使用最新的springboot2.1.5
 
 
 #### 视频讲解地址：[https://edu.csdn.net/course/detail/23443](https://edu.csdn.net/course/detail/23443)
