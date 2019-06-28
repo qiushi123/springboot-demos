@@ -18,7 +18,7 @@ public class UploadController {
 
     //单个文件的上传
     @PostMapping("/upload")
-    public String upload(MultipartFile uploadFile, HttpServletRequest request) {
+    public String upload(MultipartFile uploadFile, HttpServletRequest request) throws Exception {
         /*
          定义文件的存储路径,如下，是在linux和mac上定义的文件路径
         /private/var/folders/8x/4zvnbqmj1w33cqmzrpygzbth0000gn/T/tomcat-docbase.5206733816001100271.8080/uploadFile
@@ -30,23 +30,23 @@ public class UploadController {
             dir.mkdirs();
         }
 
-        try {
-            String filename = uploadFile.getOriginalFilename();
-            //服务端保存的文件对象
-            File fileServer = new File(dir, filename);
-            System.out.println("file文件真实路径:" + fileServer.getAbsolutePath());
-            //2，实现上传
-            uploadFile.transferTo(fileServer);
-            String filePath = request.getScheme() + "://" +
-                    request.getServerName() + ":"
-                    + request.getServerPort()
-                    + "/uploadFile/" + filename;
-            //3，返回可供访问的网络路径
-            return filePath;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return "上传失败";
+        //        try {
+        String filename = uploadFile.getOriginalFilename();
+        //服务端保存的文件对象
+        File fileServer = new File(dir, filename);
+        System.out.println("file文件真实路径:" + fileServer.getAbsolutePath());
+        //2，实现上传
+        uploadFile.transferTo(fileServer);
+        String filePath = request.getScheme() + "://" +
+                request.getServerName() + ":"
+                + request.getServerPort()
+                + "/uploadFile/" + filename;
+        //3，返回可供访问的网络路径
+        return filePath;
+        //        } catch (IOException e) {
+        //            throw new Exception("异常");
+        //        }
+        //        return "上传失败";
     }
 
     //多个文件的上传

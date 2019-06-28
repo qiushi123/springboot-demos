@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--    <meta http-equiv="Refresh" content="5;url=https://www.toutiao.com/"/>-->
+    <title>404错误</title>
+    <script type="text/javascript">
+        window.onload = function () {
+            var i = 4;
+            var tim = document.getElementById("timers");
+            var timer = setInterval(function () {
+                if (i == -1) {
+                    //第二种跳转方式
+                    window.location.href = "https://www.toutiao.com/";
+                    clearInterval(timer);
+                } else {
+                    tim.innerHTML = i;
+                    --i;
+                }
+            }, 1000);
+        }
+    </script>
+</head>
+<body>
+404错误。
+<p>您将在 <span id="timers" style="color: red; font-size: 5rem">5</span> 秒内跳转到首页。</p>
+<p><a href="https://www.toutiao.com/">首页</a></p>
+<p>如果超过 5 秒后您仍然看到本消息，请点击上面的首页链接。</p>
+</body>
+</html>
