@@ -1,2 +1,9 @@
 server:
   port: 8081
+
+
+#自定义全局配置字段
+limit:
+  minMoney: 1
+  maxMoney: 1000
+  description: 最少要发${limit.minMoney} 元,最大金额${limit.maxMoney}

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--声明对应bean的命名空间-->
+<mapper namespace="com.shitou.springbootdemos.mybatis.repository.UserMapper">
+
+    <!--    查询到的结果返回样式-->
+    <resultMap id="SysUserResultMap" type="User">
+        <id property="id" column="id" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+        <result property="name" column="name" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        <result property="age" column="AGE" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--增-->
+    <insert id="save" parameterType="User">
+        insert into user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="age != null">
+                age
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="age != null">
+                #{age,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+
+    <!--    删-->
+    <delete id="deleteById">
+        delete from user where id=#{id}
+    </delete>
+
+    <!--    改-->
+    <update id="update" parameterType="User">
+        update user
+        <set>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="age != null">
+                age = #{age,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+
+    <!--    查-->
+    <select id="selectAll" resultMap="SysUserResultMap">
+        select * from user
+    </select>
+    <select id="selectById" resultMap="SysUserResultMap">
+        select
+        *
+        from user
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+</mapper>
