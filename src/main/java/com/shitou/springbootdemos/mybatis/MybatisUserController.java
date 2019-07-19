@@ -3,11 +3,12 @@ package com.shitou.springbootdemos.mybatis;
 import com.shitou.springbootdemos.mybatis.bean.User;
 import com.shitou.springbootdemos.mybatis.repository.UserMapper;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+
+import javax.annotation.Resource;
 
 /**
  * Created by qcl on 2019-07-18
@@ -17,7 +18,7 @@ import java.util.List;
 @RestController
 public class MybatisUserController {
 
-    @Autowired
+    @Resource
     UserMapper mapper;
 
     @GetMapping("save")
