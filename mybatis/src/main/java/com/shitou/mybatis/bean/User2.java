@@ -1,4 +1,4 @@
-package com.shitou.mybatis.demo;
+package com.shitou.mybatis.bean;
 
 /**
  * user数据表对应的bean

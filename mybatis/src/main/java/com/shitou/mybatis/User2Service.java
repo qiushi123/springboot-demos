@@ -1,4 +1,7 @@
-package com.shitou.mybatis.demo;
+package com.shitou.mybatis;
+
+import com.shitou.mybatis.bean.User2;
+import com.shitou.mybatis.mapper.User2Mapper;
 
 import org.springframework.stereotype.Service;
 
